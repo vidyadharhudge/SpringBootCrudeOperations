@@ -1,18 +1,16 @@
 package com.bl.demo.greeting.service;
-
-import com.bl.demo.greeting.dao.UserDAO;
+import com.bl.demo.greeting.repository.UserRepository;
 import com.bl.demo.greeting.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserDAO userDAO;
+    private UserRepository userDAO;
 
     @Transactional
     @Override
@@ -23,18 +21,19 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public User get(int id) {
-        return null;
+        return userDAO.get(id);
     }
 
     @Transactional
     @Override
-    public void save(User user) {
-
+    public User save(User user) {
+        userDAO.save(user);
+        return user;
     }
 
     @Transactional
     @Override
     public void delete(int id) {
-
     }
+
 }
