@@ -9,6 +9,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/user")
 public class UserController {
+
     @Autowired
     private UserService userService;
 
@@ -20,7 +21,6 @@ public class UserController {
     @PostMapping("/add")
     public User save(@RequestBody UserDTO user){
         return userService.save(user);
-
     }
 
     @PutMapping("/update/{id}")
@@ -29,7 +29,7 @@ public class UserController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public String save(@PathVariable(name = "id")Integer id) {
-         return userService.delete(id);
+    public void save(@PathVariable Integer id) {
+          userService.delete(id);
     }
 }

@@ -6,10 +6,8 @@ import com.bl.demo.greeting.model.User;
 import java.util.List;
 
 public interface UserService {
-
     List<User> get();
     User save (UserDTO user);
-    String delete(Integer id);
+    void delete(Integer id);
     User update(Integer id,UserDTO userDTO);
-
 }

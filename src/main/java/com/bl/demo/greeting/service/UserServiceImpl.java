@@ -24,14 +24,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String delete(Integer id) {
-        return null;
+    public void delete(Integer id) {
+        userRepository.deleteById(id);
     }
 
     @Override
     public User update(Integer id, UserDTO userDTO) {
         return null;
     }
-
-
 }
