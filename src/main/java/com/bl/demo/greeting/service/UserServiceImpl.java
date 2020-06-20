@@ -1,39 +1,37 @@
 package com.bl.demo.greeting.service;
-import com.bl.demo.greeting.repository.UserRepository;
+import com.bl.demo.greeting.dto.UserDTO;
 import com.bl.demo.greeting.model.User;
+import com.bl.demo.greeting.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserRepository userDAO;
+    private UserRepository userRepository;
 
-    @Transactional
     @Override
     public List<User> get() {
-        return userDAO.get();
+        return userRepository.findAll();
     }
 
-    @Transactional
     @Override
-    public User get(int id) {
-        return userDAO.get(id);
+    public User save(UserDTO userDTO) {
+        User user=new User(userDTO);
+        return userRepository.save(user);
     }
 
-    @Transactional
     @Override
-    public User save(User user) {
-        userDAO.save(user);
-        return user;
+    public String delete(Integer id) {
+        return null;
     }
 
-    @Transactional
     @Override
-    public void delete(int id) {
+    public User update(Integer id, UserDTO userDTO) {
+        return null;
     }
+
 
 }

@@ -1,33 +1,35 @@
 package com.bl.demo.greeting.controller;
-
+import com.bl.demo.greeting.dto.UserDTO;
 import com.bl.demo.greeting.model.User;
 import com.bl.demo.greeting.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/user")
 public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/user")
+    @GetMapping("/information")
     public List<User>get(){
         return userService.get();
     }
 
-    @PostMapping("/user")
-    public User save(@RequestBody User user){
-         userService.save(user);
-         return user;
+    @PostMapping("/add")
+    public User save(@RequestBody UserDTO user){
+        return userService.save(user);
+
     }
 
-    @GetMapping("/user/{id}")
-    public User get(@PathVariable int id){
-        return userService.get(id);
+    @PutMapping("/update/{id}")
+    public User save(@PathVariable (name = "id")Integer id,@RequestBody UserDTO user){
+        return userService.update(id,user);
     }
 
-
+    @DeleteMapping("/delete/{id}")
+    public String save(@PathVariable(name = "id")Integer id) {
+         return userService.delete(id);
+    }
 }

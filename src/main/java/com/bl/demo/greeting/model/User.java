@@ -1,20 +1,22 @@
 package com.bl.demo.greeting.model;
+import com.bl.demo.greeting.dto.UserDTO;
+
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    @Column
     private String userName;
-    @Column
     private String password;
 
-    public Integer getId() {
-        return id;
+    public User(){
+    }
+
+    public User(UserDTO userDTO){
+        userName=userDTO.userName;
+        password=userDTO.password;
     }
 
     public void setId(Integer id) {
