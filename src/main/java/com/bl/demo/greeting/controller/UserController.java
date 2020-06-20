@@ -30,6 +30,6 @@ public class UserController {
 
     @DeleteMapping("/delete/{id}")
     public void save(@PathVariable Integer id) {
-          userService.delete(id);
+        userService.delete(id);
     }
 }

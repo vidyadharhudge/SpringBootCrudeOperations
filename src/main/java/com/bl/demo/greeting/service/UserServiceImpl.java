@@ -29,7 +29,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User update(Integer id, UserDTO userDTO) {
-        return null;
+    public User update(Integer id,UserDTO userDTO) {
+        User userDTO1=userRepository.findById(id).get();
+       String u1=userDTO.getUserName();
+       String u2=userDTO.getPassword();
+       userDTO1.setPassword(u2);
+       userDTO1.setUserName(u1);
+       return userRepository.save(userDTO1);
     }
 }
+
